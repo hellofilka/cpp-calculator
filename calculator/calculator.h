@@ -1,5 +1,5 @@
-using Number = double;
-
 #pragma once
+
+using Number = double;
 
 bool RunCalculatorCycle();
