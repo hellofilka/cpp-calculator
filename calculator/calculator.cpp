@@ -3,8 +3,8 @@
 2. узнал что такое std::optional, и как его использовать(для проверки наличия у memory_num значения)
 3. узнал что математический порядок действий не нужно соблюдать(слава богу спросил вовремя)
 4. т. к. я это делал в вс код, мне помогли с рутиной(+, -, * и т. д.)
-
 */
+
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -13,7 +13,6 @@
 #include <vector>
 #include "calculator.h"
 
-
 bool ReadNumber(Number& num){
     if (!(std::cin >> num)){
         std::cerr << "Error: Numeric operand expected";
@@ -21,11 +20,6 @@ bool ReadNumber(Number& num){
     }
     return true;
 }
-
-
-
-
-
 
 bool RunCalculatorCycle(){
     Number sum_now, b;
@@ -104,10 +98,4 @@ bool RunCalculatorCycle(){
         }
 
     }
-    
-
-
-
-
-
 }
