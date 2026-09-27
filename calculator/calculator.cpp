@@ -22,7 +22,8 @@ bool ReadNumber(Number& number){
 }
 
 bool RunCalculatorCycle(){
-    Number current_result, operand;
+    Number current_result = 0;
+    Number operand = 0;
     std::optional<Number> memory_num;
     std::string command;
     std::vector<std::string> operators = {"+", "-", "*", "/", "=", "c", "l", "s", "q", ":", "**"};
