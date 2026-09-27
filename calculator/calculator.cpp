@@ -13,8 +13,8 @@
 #include <vector>
 #include "calculator.h"
 
-bool ReadNumber(Number& num){
-    if (!(std::cin >> num)){
+bool ReadNumber(Number& number){
+    if (!(std::cin >> number)){
         std::cerr << "Error: Numeric operand expected";
         return false;
     }
@@ -22,29 +22,29 @@ bool ReadNumber(Number& num){
 }
 
 bool RunCalculatorCycle(){
-    Number sum_now, b;
+    Number current_result, operand;
     std::optional<Number> memory_num;
-    std::string op;
+    std::string command;
     std::vector<std::string> operators = {"+", "-", "*", "/", "=", "c", "l", "s", "q", ":", "**"};
-    if (!(ReadNumber(sum_now))){
+    if (!(ReadNumber(current_result))){
         return false;
     }
     while (true){
-        std::cin >> op;
-        if (!(std::find(operators.begin(), operators.end(), op) != operators.end())){
-            std::cerr << "Error: Unknown token " << op;
+        std::cin >> command;
+        if (!(std::find(operators.begin(), operators.end(), command) != operators.end())){
+            std::cerr << "Error: Unknown token " << command;
             return false;
         }
-        else if (op == "q"){
+        else if (command == "q"){
             return true;
         }
-        else if (op == "c"){
-            sum_now = 0;
+        else if (command == "c"){
+            current_result = 0;
             continue;
         }
-        else if (op == "l"){
+        else if (command == "l"){
             if (memory_num.has_value()){
-                sum_now = memory_num.value();
+                current_result = memory_num.value();
             }
             else{
                 std::cerr << "Error: Memory is empty";
@@ -52,49 +52,49 @@ bool RunCalculatorCycle(){
             }
             continue;
         }
-        else if (op == "s"){
-            memory_num = sum_now;
+        else if (command == "s"){
+            memory_num = current_result;
             continue;
         }
-        else if (op == ":"){
-            if (!(ReadNumber(sum_now))){
+        else if (command == ":"){
+            if (!(ReadNumber(current_result))){
                 return false;
             }
             continue;
         }
-        else if (op == "="){
-            std::cout << sum_now << std::endl;
+        else if (command == "="){
+            std::cout << current_result << std::endl;
             continue;
         }
-        else if (op == "+"){
-            if (!(ReadNumber(b))){
+        else if (command == "+"){
+            if (!(ReadNumber(operand))){
                 return false;
             }
-            sum_now += b;
+            current_result += operand;
         }
-        else if (op == "-"){
-            if (!(ReadNumber(b))){
+        else if (command == "-"){
+            if (!(ReadNumber(operand))){
                 return false;
             }
-            sum_now -= b;
+            current_result -= operand;
         }
-        else if (op == "*"){
-            if (!(ReadNumber(b))){
+        else if (command == "*"){
+            if (!(ReadNumber(operand))){
                 return false;
             }
-            sum_now *= b;
+            current_result *= operand;
         }
-        else if (op == "/"){
-            if (!(ReadNumber(b))){
+        else if (command == "/"){
+            if (!(ReadNumber(operand))){
                 return false;
             }
-            sum_now /= b;
+            current_result /= operand;
         }
-        else if (op == "**"){
-            if (!(ReadNumber(b))){
+        else if (command == "**"){
+            if (!(ReadNumber(operand))){
                 return false;
             }
-            sum_now = pow(sum_now, b);
+            current_result = pow(current_result, operand);
         }
 
     }
