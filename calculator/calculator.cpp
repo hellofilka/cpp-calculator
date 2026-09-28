@@ -35,66 +35,71 @@ bool RunCalculatorCycle(){
             std::cerr << "Error: Unknown token " << command;
             return false;
         }
-        else if (command == "q"){
+        if (command == "q"){
             return true;
         }
-        else if (command == "c"){
+        if (command == "c"){
             current_result = 0;
             continue;
         }
-        else if (command == "l"){
-            if (memory_num.has_value()){
-                current_result = memory_num.value();
-            }
-            else{
+        if (command == "l"){
+            if (!memory_num.has_value()){
                 std::cerr << "Error: Memory is empty";
                 return false;
             }
-            continue;
+            else {
+                current_result = memory_num.value();
+                continue;
+            }
         }
-        else if (command == "s"){
+        if (command == "s"){
             memory_num = current_result;
             continue;
         }
-        else if (command == ":"){
+        if (command == ":"){
             if (!ReadNumber(current_result)){
                 return false;
             }
             continue;
         }
-        else if (command == "="){
+        if (command == "="){
             std::cout << current_result << std::endl;
             continue;
         }
-        else if (command == "+"){
+        if (command == "+"){
             if (!ReadNumber(operand)){
                 return false;
             }
             current_result += operand;
+            continue;
         }
-        else if (command == "-"){
+        if (command == "-"){
             if (!ReadNumber(operand)){
                 return false;
             }
             current_result -= operand;
+            continue;
         }
-        else if (command == "*"){
+        if (command == "*"){
             if (!ReadNumber(operand)){
                 return false;
             }
             current_result *= operand;
+            continue;
         }
-        else if (command == "/"){
+        if (command == "/"){
             if (!ReadNumber(operand)){
                 return false;
             }
             current_result /= operand;
+            continue;
         }
-        else if (command == "**"){
+        if (command == "**"){
             if (!ReadNumber(operand)){
                 return false;
             }
             current_result = pow(current_result, operand);
+            continue;
         }
     }
     std::cerr << "Error: Unknown token " << command << std::endl;
