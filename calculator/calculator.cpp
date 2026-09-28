@@ -98,7 +98,7 @@ bool RunCalculatorCycle(){
             if (!ReadNumber(operand)){
                 return false;
             }
-            current_result = pow(current_result, operand);
+            current_result = std::pow(current_result, operand);
             continue;
         }
     }
