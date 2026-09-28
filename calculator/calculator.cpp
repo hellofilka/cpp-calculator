@@ -30,8 +30,7 @@ bool RunCalculatorCycle(){
     if (!(ReadNumber(current_result))){
         return false;
     }
-    while (true){
-        std::cin >> command;
+    while (std::cin >> command){
         if (!(std::find(operators.begin(), operators.end(), command) != operators.end())){
             std::cerr << "Error: Unknown token " << command;
             return false;
@@ -97,6 +96,7 @@ bool RunCalculatorCycle(){
             }
             current_result = pow(current_result, operand);
         }
-
     }
+    std::cerr << "Error: Unknown token " << command << std::endl;
+    return false;
 }
