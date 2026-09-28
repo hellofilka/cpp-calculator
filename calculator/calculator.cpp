@@ -31,7 +31,7 @@ bool RunCalculatorCycle(){
         return false;
     }
     while (std::cin >> command){
-        if (!(std::find(operators.begin(), operators.end(), command) != operators.end())){
+        if (std::find(operators.begin(), operators.end(), command) == operators.end()){
             std::cerr << "Error: Unknown token " << command;
             return false;
         }
@@ -57,7 +57,7 @@ bool RunCalculatorCycle(){
             continue;
         }
         else if (command == ":"){
-            if (!(ReadNumber(current_result))){
+            if (!ReadNumber(current_result)){
                 return false;
             }
             continue;
@@ -67,31 +67,31 @@ bool RunCalculatorCycle(){
             continue;
         }
         else if (command == "+"){
-            if (!(ReadNumber(operand))){
+            if (!ReadNumber(operand)){
                 return false;
             }
             current_result += operand;
         }
         else if (command == "-"){
-            if (!(ReadNumber(operand))){
+            if (!ReadNumber(operand)){
                 return false;
             }
             current_result -= operand;
         }
         else if (command == "*"){
-            if (!(ReadNumber(operand))){
+            if (!ReadNumber(operand)){
                 return false;
             }
             current_result *= operand;
         }
         else if (command == "/"){
-            if (!(ReadNumber(operand))){
+            if (!ReadNumber(operand)){
                 return false;
             }
             current_result /= operand;
         }
         else if (command == "**"){
-            if (!(ReadNumber(operand))){
+            if (!ReadNumber(operand)){
                 return false;
             }
             current_result = pow(current_result, operand);
