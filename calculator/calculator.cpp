@@ -26,7 +26,7 @@ bool RunCalculatorCycle(){
     std::optional<Number> memory_num;
     std::string command;
     std::vector<std::string> operators = {"+", "-", "*", "/", "=", "c", "l", "s", "q", ":", "**"};
-    if (!(ReadNumber(current_result))){
+    if (!ReadNumber(current_result)){
         std::cerr << "Error: Numeric operand expected";
         return false;
     }
