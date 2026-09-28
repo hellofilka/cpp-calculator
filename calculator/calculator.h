@@ -3,4 +3,4 @@
 using Number = double;
 
 bool RunCalculatorCycle();
-double ReadNumber(Number& number);
+bool ReadNumber(Number& number);

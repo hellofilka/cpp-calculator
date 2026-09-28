@@ -24,11 +24,10 @@ bool ReadNumber(Number& number){
 bool RunCalculatorCycle(){
     Number current_result = 0;
     Number operand = 0;
-    std::optional<Number> memory_num;
+    std::optional<Number> memory_number;
     std::string command;
     std::vector<std::string> operators = {"+", "-", "*", "/", "=", "c", "l", "s", "q", ":", "**"};
     if (!ReadNumber(current_result)){
-        std::cerr << "Error: Numeric operand expected";
         return false;
     }
     while (std::cin >> command){
@@ -44,15 +43,15 @@ bool RunCalculatorCycle(){
             continue;
         }
         if (command == "l"){
-            if (!memory_num.has_value()){
+            if (!memory_number.has_value()){
                 std::cerr << "Error: Memory is empty";
                 return false;
             }
-            current_result = memory_num.value();
+            current_result = memory_number.value();
             continue;
         }
         if (command == "s"){
-            memory_num = current_result;
+            memory_number = current_result;
             continue;
         }
         if (command == ":"){
