@@ -48,10 +48,8 @@ bool RunCalculatorCycle(){
                 std::cerr << "Error: Memory is empty";
                 return false;
             }
-            else {
-                current_result = memory_num.value();
-                continue;
-            }
+            current_result = memory_num.value();
+            continue;
         }
         if (command == "s"){
             memory_num = current_result;
@@ -103,6 +101,5 @@ bool RunCalculatorCycle(){
             continue;
         }
     }
-    std::cerr << "Error: Unknown token " << command << std::endl;
-    return false;
+    return true;
 }

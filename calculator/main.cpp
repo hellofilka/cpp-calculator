@@ -1,7 +1,5 @@
 #include "calculator.h"
 
 int main(){
-    RunCalculatorCycle();
-
-    return 0;
+    return RunCalculatorCycle();
 }
