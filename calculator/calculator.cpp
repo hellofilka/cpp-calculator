@@ -15,6 +15,7 @@
 
 bool ReadNumber(Number& number){
     if (!(std::cin >> number)){
+        std::cerr << "Error: Numeric operand expected";
         return false;
     }
     return true;
@@ -26,7 +27,7 @@ bool RunCalculatorCycle(){
     std::optional<Number> memory_num;
     std::string command;
     std::vector<std::string> operators = {"+", "-", "*", "/", "=", "c", "l", "s", "q", ":", "**"};
-    if (!(ReadNumber(current_result))){
+    if (!ReadNumber(current_result)){
         std::cerr << "Error: Numeric operand expected";
         return false;
     }
@@ -58,7 +59,6 @@ bool RunCalculatorCycle(){
         }
         if (command == ":"){
             if (!ReadNumber(current_result)){
-        std::cerr << "Error: Numeric operand expected";
                 return false;
             }
             continue;
@@ -69,7 +69,6 @@ bool RunCalculatorCycle(){
         }
         if (command == "+"){
             if (!ReadNumber(operand)){
-                std::cerr << "Error: Numeric operand expected";
                 return false;
             }
             current_result += operand;
@@ -77,7 +76,6 @@ bool RunCalculatorCycle(){
         }
         if (command == "-"){
             if (!ReadNumber(operand)){
-                std::cerr << "Error: Numeric operand expected";
                 return false;
             }
             current_result -= operand;
@@ -85,7 +83,6 @@ bool RunCalculatorCycle(){
         }
         if (command == "*"){
             if (!ReadNumber(operand)){
-                std::cerr << "Error: Numeric operand expected";
                 return false;
             }
             current_result *= operand;
@@ -93,7 +90,6 @@ bool RunCalculatorCycle(){
         }
         if (command == "/"){
             if (!ReadNumber(operand)){
-                std::cerr << "Error: Numeric operand expected";
                 return false;
             }
             current_result /= operand;
@@ -101,7 +97,6 @@ bool RunCalculatorCycle(){
         }
         if (command == "**"){
             if (!ReadNumber(operand)){
-                std::cerr << "Error: Numeric operand expected";
                 return false;
             }
             current_result = std::pow(current_result, operand);
